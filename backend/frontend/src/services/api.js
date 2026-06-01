@@ -1,15 +1,7 @@
 import axios from "axios";
 
-const RENDER_API_URL = "https://ethara-ai-assignment-8hpq.onrender.com";
-const configuredApiUrl = import.meta.env.VITE_API_URL || import.meta.env.REACT_APP_API_URL;
-const isLocalBrowser =
-  typeof window !== "undefined" &&
-  ["localhost", "127.0.0.1", ""].includes(window.location.hostname);
-
-const apiBaseUrl = isLocalBrowser ? configuredApiUrl || "http://localhost:8000" : RENDER_API_URL;
-
 const api = axios.create({
-  baseURL: apiBaseUrl,
+  baseURL: import.meta.env.VITE_API_URL || import.meta.env.REACT_APP_API_URL || "http://localhost:8000",
 });
 
 export const productsApi = {
